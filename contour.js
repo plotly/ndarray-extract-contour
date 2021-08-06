@@ -83,7 +83,7 @@ function compileSurfaceProcedure(vertexFunc, faceFunc, phaseFunc, scalarArgs, or
 
   //Assemble arguments
   for(var i=0; i<arrayArgs; ++i) {
-    args.push(array(i))  
+    args.push(array(i))
   }
   for(var i=0; i<scalarArgs; ++i) {
     args.push(scalar(i))
@@ -183,7 +183,7 @@ function compileSurfaceProcedure(vertexFunc, faceFunc, phaseFunc, scalarArgs, or
 
   function fillEmptySlice(k) {
     for(var i=k-1; i>=0; --i) {
-      forLoopBegin(i, 0) 
+      forLoopBegin(i, 0)
     }
     var phaseFuncArgs = []
     for(var i=0; i<arrayArgs; ++i) {
@@ -223,9 +223,9 @@ function compileSurfaceProcedure(vertexFunc, faceFunc, phaseFunc, scalarArgs, or
     for(var i=0; i<scalarArgs; ++i) {
       phaseFuncArgs.push(scalar(i))
     }
-    
+
     code.push(pcube(0), "=", PHASES, "[", POINTER, "]=phase(", phaseFuncArgs.join(), ");")
-    
+
     //Read in other cube data
     for(var j=1; j<(1<<dimension); ++j) {
       code.push(pcube(j), "=", PHASES, "[", POINTER, "+", pdelta(j), "];")
@@ -297,7 +297,7 @@ function compileSurfaceProcedure(vertexFunc, faceFunc, phaseFunc, scalarArgs, or
           "face(", faceArgs.join(), ")}")
       }
     }
-    
+
     //Increment pointer, close off if statement
     code.push("}",
       POINTER, "+=1;")
@@ -354,17 +354,17 @@ function compileSurfaceProcedure(vertexFunc, faceFunc, phaseFunc, scalarArgs, or
     "return ", funcName ].join("")
 
   var proc = new Function(
-    "vertex", 
-    "face", 
-    "phase", 
-    "mallocUint32", 
+    "vertex",
+    "face",
+    "phase",
+    "mallocUint32",
     "freeUint32",
     procedureCode)
   return proc(
-    vertexFunc, 
-    faceFunc, 
-    phaseFunc, 
-    pool.mallocUint32, 
+    vertexFunc,
+    faceFunc,
+    phaseFunc,
+    pool.mallocUint32,
     pool.freeUint32)
 }
 
