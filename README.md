@@ -1,5 +1,12 @@
 ndarray-extract-contour
 =======================
+
+<div align="center">
+  <a href="https://dash.plotly.com/project-maintenance">
+    <img src="https://dash.plotly.com/assets/images/maintained-by-plotly.png" width="400px" alt="Maintained by Plotly">
+  </a>
+</div>
+
 General purpose contour extraction routine generator.  This library has a really horrible interface, but it is pretty flexible.  It is mostly useful as an internal component, and should not be used generally unless you know what you are doing.
 
 As an example of a nicer interface built using this module, take a look at [surface-nets](https://github.com/mikolalysenko/surface-nets).
